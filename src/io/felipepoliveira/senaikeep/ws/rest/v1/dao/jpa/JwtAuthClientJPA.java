@@ -25,9 +25,6 @@ public class JwtAuthClientJPA extends AbstractJPA<JwtAuthClientModel> implements
 		String hql = "SELECT j FROM JwtAuthClient j WHERE j.user.email = :email AND j.minimumRequiredDate <= :date";
 		Query query = session().createQuery(hql);
 		
-		System.out.println(jwtAuthClient.getUser().getEmail());
-		System.out.println(new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(jwtAuthClient.getRefreshDate()));
-		
 		query.setParameter("email", jwtAuthClient.getUser().getEmail());
 		query.setParameter("date", jwtAuthClient.getRefreshDate());
 		

@@ -4,8 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import io.felipepoliveira.senaikeep.ws.rest.v1.utils.AuthClient;
@@ -21,9 +19,6 @@ public class AuthenticationDelegatorInterceptor implements HandlerInterceptor, A
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
-		System.out.println("Entering authentication delegator interpcetor....");
-		
 		if(isException(request)) {
 			return true;
 		}
@@ -31,9 +26,6 @@ public class AuthenticationDelegatorInterceptor implements HandlerInterceptor, A
 		//Check if the request contains Authorization header. If the request does not sent the header deny access
 		String authorizationHeader = request.getHeader("Authorization");
 		if(authorizationHeader != null) {
-			
-			System.out.println("Checking Authorization header");
-			
 			//Check the authorization method. If the method is not recognized deny access
 			AuthClient client = null;
 			if(authorizationHeader.startsWith("Bearer")) {
@@ -52,7 +44,6 @@ public class AuthenticationDelegatorInterceptor implements HandlerInterceptor, A
 			}
 			
 			//If the client exists
-			System.out.println("The client: " + client);
 			setAuthClient(client);
 			System.out.println("Authorization ok: " + client.getId());
 			return true;
@@ -70,7 +61,7 @@ public class AuthenticationDelegatorInterceptor implements HandlerInterceptor, A
 			return true;
 		} 
 		//Create exception to (*/user [POST])
-		else if(	request.getRequestURI().endsWith("user") && 
+		else if(	request.getRequestURI().endsWith("users") && 
 			request.getMethod().toUpperCase().equals("POST")) {
 			return true;
 		}

@@ -68,7 +68,7 @@ public abstract class AbstractJPA<T> implements DAO<T> {
 		for (String field : queryFields.keySet()) {
 			
 			//Add the o.field = :field command
-			hql += "o." + field + " = :" + field;
+			hql += "o." + field + " = :" + field.replace('.', '_');
 			
 			//Add the OR to concat with another queried field
 			if(currentIndex < mapSize - 1) {
@@ -79,7 +79,7 @@ public abstract class AbstractJPA<T> implements DAO<T> {
 		//Build the query and define the parameters with the values of the map
 		Query query = session().createQuery(hql);
 		for(String field : queryFields.keySet()) {
-			query.setParameter(field, queryFields.get(field));
+			query.setParameter(field.replace('.', '_'), queryFields.get(field));
 		}
 		
 		//Return the result

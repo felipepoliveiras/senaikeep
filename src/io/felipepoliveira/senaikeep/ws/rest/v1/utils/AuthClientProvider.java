@@ -6,6 +6,10 @@ public interface AuthClientProvider {
 	
 	public AuthClient getAuthClient();
 	
+	public default boolean validateResource(Long otherOwnerId)  {
+		return getAuthClient().getId() == otherOwnerId;
+	}
+	
 	public default boolean verifyAuthClient() throws UnauthorizedException{
 		if(getAuthClient() == null) {
 			throw new UnauthorizedException("The authenticated client was not found");

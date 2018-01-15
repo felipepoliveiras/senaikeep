@@ -19,7 +19,7 @@ import io.felipepoliveira.senaikeep.services.UserService;
 import io.felipepoliveira.senaikeep.ws.rest.AbstractRestController;
 
 @RestController
-@RequestMapping(value = "/rest/1.0/user")
+@RequestMapping(value = "/rest/1.0/users")
 @SuppressWarnings("rawtypes")
 public class UserController extends AbstractRestController{
 	

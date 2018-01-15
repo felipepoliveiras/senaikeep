@@ -39,6 +39,20 @@
 	    <version>2.9.2</version>
 	</dependency>
 	
+	<!-- Javax: JSP API https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+	<dependency>
+	    <groupId>javax.servlet.jsp</groupId>
+	    <artifactId>javax.servlet.jsp-api</artifactId>
+	    <version>2.3.1</version>
+	</dependency>
+	
+	<!-- Javax: JSP JSTL https://mvnrepository.com/artifact/javax.servlet/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	
 	<!-- Javax: Servlet https://mvnrepository.com/artifact/javax.validation/validation-api -->
 	<dependency>
 	    <groupId>javax.servlet</groupId>
